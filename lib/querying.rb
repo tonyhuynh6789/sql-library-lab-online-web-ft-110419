@@ -45,10 +45,10 @@ def select_series_title_with_most_human_characters
 end
 
 def select_character_names_and_number_of_books_they_are_in
-  "select characters.name, COUNT(character_books.character_id) as number_books
-  from Characters
-  inner join character_books
-  on Characters.id = character_books.character_id
+  "select Characters.name, COUNT(*) as number_books
+  from character_books 
+  join Characters
+  on character_books.character_id = Characters.id
   group by Characters.name 
-  order by number_books, characters.name desc ;"
+  order by number_books desc;"
 end
